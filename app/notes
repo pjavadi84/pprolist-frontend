@@ -1,0 +1,16 @@
+List
+has_many :products 
+:list_date => datetime
+:shipping_method => string,
+:shipping_cost => float
+:total => float
+
+
+
+Products
+belongs_to :list
+:list_id => integer
+:name => string
+:description =>  text
+:price => float
+:kind => string
