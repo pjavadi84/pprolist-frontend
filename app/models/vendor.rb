@@ -1,6 +1,7 @@
 class Vendor < ApplicationRecord
     has_many :products
     validates :name, :total_cost, presence: true
+    validates :name, uniqueness: true
 
     def update_total_cost(product)
         if product.kind == 'add'
