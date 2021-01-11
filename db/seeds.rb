@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 vendor1 = Vendor.create(name: "Costco", total_cost: 74.63)
-product1 = Product.create(vendor_id: 1, name: "Brorganics - 1 gallon milk", description: "1 gallon organic milk", price: 10.00, kind:"add" )
-product2 = Product.create(vendor_id: 1, name: "Safechipz - Large potato chips", description: "1 bag of organic chips", price: 8.00, kind:"delete")
+product1 = Product.create(vendor_id: 1, name: "Brorganics - 1 gallon milk", description: "1 gallon organic milk", price: 10.00, kind:"standard", discount_rate: nil )
+product2 = Product.create(vendor_id: 1, name: "Safechipz - Large potato chips", description: "1 bag of organic chips", price: 8.00, kind:"discount", discount_rate: 0.2)
