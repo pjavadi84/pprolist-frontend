@@ -1,19 +1,20 @@
 class Vendor < ApplicationRecord
     has_many :products
     validates :name, :total_cost, presence: true
-    validates :name, uniqueness: true
+    # validates :name, uniqueness: true
 
     def update_total_cost(product)
-        if product.kind == 'add'
+        if product.kind == 'standard'
           self.total_cost += product.price
           self.save
-        elsif product.kind == 'delete'
-          if self.total_cost >= product.price
-            self.total_cost -= product.price
-            self.save
-          else
-            return 'total cost can not be less than product price.'
-          end
+        elsif product.kind == 'discount' && 0<product.discount_rate<1
+            product.price += (product.price * product.discount_rate)
+            if self.total_cost >= product.price
+                self.total_cost += product.price
+                self.save
+            else
+                return 'total cost can not be less than product price.'
+            end
         end
       end
 
