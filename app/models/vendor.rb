@@ -7,7 +7,7 @@ class Vendor < ApplicationRecord
         if product.kind == 'standard' && (!product.discount_rate || product.discount_rate == 0.0)
           self.total_cost += product.price
           self.save
-        elsif product.kind == 'discount' && (product.discount_rate !== nil && 0<product.discount_rate<1)
+        elsif product.kind == 'discount' && (product.discount_rate && 0<product.discount_rate<1)
             product.price += (product.price * product.discount_rate)
             if self.total_cost >= product.price
                 self.total_cost += product.price
