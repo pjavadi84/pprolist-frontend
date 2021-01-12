@@ -13,7 +13,7 @@ class Api::V1::ProductsController < ApplicationController
 
         if @vendor.update_total_cost(@product) != 'total cost can not be less than product price.'
             @product.save
-            render json: @product
+            render json: @vendor
         else 
             render json: {error: 'total cost can not be less than product price.'}
         end
