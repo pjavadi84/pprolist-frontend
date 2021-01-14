@@ -35,15 +35,23 @@ class Api::V1::ProductsController < ApplicationController
 
 
     def destroy
+        # binding.pry
         @product = Product.find(params[:id])
         @vendor = Vendor.find(@product.vendor_id)
-
-        if @vendor.update_total_cost_on_delete(@product)
+        
+       
+        if @vendor.update_total_cost_on_product_deletion(@product)
             @product.destroy
-            render json: @product
+            render json: @vendor
         else
-            render json: {error: 'total cost can not be less than product price.'}
+            render json: {error: "total_cost is too low to be subtracted"}
         end
+        # if @vendor.update_total_cost_on_delete(@product)
+        #     @product.destroy
+        #     render json: @vendor
+        # else
+        #     render json: {error: 'total cost can not be less than product price.'}
+        # end
     end
 
 

@@ -8,7 +8,7 @@ class Api::V1::VendorsController < ApplicationController
     def create
         @vendor = Vendor.new(vendor_params) 
         if @vendor.save
-            render json: @vendor
+            render json: @vendors
         else
             render json: { error: "Error creating account"}
         end
