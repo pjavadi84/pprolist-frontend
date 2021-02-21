@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: pprolist_backend_production
-  username: pprolist_backend
-  password: <%= ENV['PPROLIST_BACKEND_DATABASE_PASSWORD'] %>
+  database:  <%= ENV['DATABASE_URL'] %>
+  # username: pprolist_backend
+  # password: <%= ENV['PPROLIST_BACKEND_DATABASE_PASSWORD'] %>
